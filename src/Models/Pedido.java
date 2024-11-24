@@ -5,29 +5,15 @@ public class Pedido {
     private String codigoPedido;
     private String idPedido;
     private String nomeCliente;
-    private String preparadoPor;
     private String statusPedido;
     private int tempoEstimado;
-    private float somaComidas;
-    private float somaBebidas;
     private float taxaServico;
-    private float impostos;
-    private float somaTotal;
-    private String modoPagamento;
+    private double somaTotal;
     private boolean paraLevar;
 
     // Métodos
-    public void escolherPagamento(String modoPagamento) {
-        this.modoPagamento = modoPagamento;
-    }
-
-    public void adicionarItem(String item, float valor, String tipo) {
-        if (tipo.equalsIgnoreCase("comida")) {
-            somaComidas += valor;
-        } else if (tipo.equalsIgnoreCase("bebida")) {
-            somaBebidas += valor;
-        }
-        calcularSomaTotal();
+    public void adicionarItem(String item, double valor, String tipo) {
+        this.somaTotal += valor;
     }
 
     public void adicionarObs(String observacao) {
@@ -35,18 +21,7 @@ public class Pedido {
     }
 
     public void encerrarPedido() {
-        calcularImpostos();
-        calcularSomaTotal();
         System.out.println("Pedido encerrado.");
-    }
-
-    // Métodos auxiliares
-    private void calcularImpostos() {
-        this.impostos = (somaComidas + somaBebidas) * 0.1f; // Exemplo: 10% de impostos
-    }
-
-    private void calcularSomaTotal() {
-        this.somaTotal = somaComidas + somaBebidas + taxaServico + impostos;
     }
 
     // Getters e setters (opcional, dependendo da necessidade)
@@ -74,14 +49,6 @@ public class Pedido {
         this.nomeCliente = nomeCliente;
     }
 
-    public String getPreparadoPor() {
-        return preparadoPor;
-    }
-
-    public void setPreparadoPor(String preparadoPor) {
-        this.preparadoPor = preparadoPor;
-    }
-
     public String getStatusPedido() {
         return statusPedido;
     }
@@ -98,22 +65,6 @@ public class Pedido {
         this.tempoEstimado = tempoEstimado;
     }
 
-    public float getSomaComidas() {
-        return somaComidas;
-    }
-
-    public void setSomaComidas(float somaComidas) {
-        this.somaComidas = somaComidas;
-    }
-
-    public float getSomaBebidas() {
-        return somaBebidas;
-    }
-
-    public void setSomaBebidas(float somaBebidas) {
-        this.somaBebidas = somaBebidas;
-    }
-
     public float getTaxaServico() {
         return taxaServico;
     }
@@ -122,16 +73,8 @@ public class Pedido {
         this.taxaServico = taxaServico;
     }
 
-    public float getImpostos() {
-        return impostos;
-    }
-
-    public float getSomaTotal() {
+    public Double getSomaTotal() {
         return somaTotal;
-    }
-
-    public String getModoPagamento() {
-        return modoPagamento;
     }
 
     public boolean isParaLevar() {

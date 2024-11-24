@@ -4,14 +4,12 @@ public class Mesa {
     // Attributes
     private int numeroMesa;
     private String idMesa;
-    private double faturamentoMesa;
     private String garcomResponsavel;
 
     // Constructor
-    public Mesa(int numeroMesa, String idMesa, double faturamentoMesa, String garcomResponsavel) {
+    public Mesa(int numeroMesa, String idMesa, String garcomResponsavel) {
         this.numeroMesa = numeroMesa;
         this.idMesa = idMesa;
-        this.faturamentoMesa = faturamentoMesa;
         this.garcomResponsavel = garcomResponsavel;
     }
 
@@ -32,30 +30,17 @@ public class Mesa {
         this.idMesa = idMesa;
     }
 
-    public double getFaturamentoMesa() {
-        return faturamentoMesa;
-    }
-
-    public void setFaturamentoMesa(double faturamentoMesa) {
-        this.faturamentoMesa = faturamentoMesa;
-    }
-
     public String getGarcomResponsavel() {
         return garcomResponsavel;
     }
 
+    // Methods
     public void setGarcomResponsavel(String garcomResponsavel) {
         this.garcomResponsavel = garcomResponsavel;
-    }
-
-    // Methods
-    public void alterarResponsavel(String novoGarcom) {
-        this.garcomResponsavel = novoGarcom;
-        System.out.println("Garçom responsável alterado para: " + novoGarcom);
+        System.out.println("Garçom responsável: " + garcomResponsavel);
     }
 
     public void adicionarPedido(double valorPedido) {
-        this.faturamentoMesa += valorPedido;
-        System.out.println("Pedido adicionado. Novo faturamento: " + this.faturamentoMesa);
+        System.out.println("Pedido adicionado.");
     }
 }

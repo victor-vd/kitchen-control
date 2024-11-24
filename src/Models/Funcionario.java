@@ -5,22 +5,13 @@ public class Funcionario {
     private String nome;
     private String email;
     private int cpf;
-    private String endereco;
-    private float comissao;
-    private float desconto;
-    private int errosCometidos;
 
     // Construtor
-    public Funcionario(int idFuncionario, String nome, String email, int cpf, String endereco,
-            float comissao, float desconto, int errosCometidos) {
+    public Funcionario(int idFuncionario, String nome, String email, int cpf) {
         this.idFuncionario = idFuncionario;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
-        this.endereco = endereco;
-        this.comissao = comissao;
-        this.desconto = desconto;
-        this.errosCometidos = errosCometidos;
     }
 
     // Getters e Setters
@@ -54,38 +45,6 @@ public class Funcionario {
 
     public void setCpf(int cpf) {
         this.cpf = cpf;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public float getComissao() {
-        return comissao;
-    }
-
-    public void setComissao(float comissao) {
-        this.comissao = comissao;
-    }
-
-    public float getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(float desconto) {
-        this.desconto = desconto;
-    }
-
-    public int getErrosCometidos() {
-        return errosCometidos;
-    }
-
-    public void setErrosCometidos(int errosCometidos) {
-        this.errosCometidos = errosCometidos;
     }
 
     // Métodos

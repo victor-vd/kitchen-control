@@ -1,40 +1,40 @@
 package Models;
 
 public class Gerente {
-    private String emailGerencia;
-    private String idGerencia;
-    private String senhaGerencia;
+    private String email;
+    private String identificacao;
+    private String senha;
 
     // Construtor
-    public Gerente(String emailGerencia, String idGerencia, String senhaGerencia) {
-        this.emailGerencia = emailGerencia;
-        this.idGerencia = idGerencia;
-        this.senhaGerencia = senhaGerencia;
+    public Gerente(String email, String identificacao, String senha) {
+        this.email = email;
+        this.identificacao = identificacao;
+        this.senha = senha;
     }
 
     // Getters e Setters
     public String getEmailGerencia() {
-        return emailGerencia;
+        return email;
     }
 
-    public void setEmailGerencia(String emailGerencia) {
-        this.emailGerencia = emailGerencia;
+    public void setEmailGerencia(String email) {
+        this.email = email;
     }
 
     public String getIdGerencia() {
-        return idGerencia;
+        return identificacao;
     }
 
-    public void setIdGerencia(String idGerencia) {
-        this.idGerencia = idGerencia;
+    public void setIdGerencia(String identificacao) {
+        this.identificacao = identificacao;
     }
 
     public String getSenhaGerencia() {
-        return senhaGerencia;
+        return senha;
     }
 
-    public void setSenhaGerencia(String senhaGerencia) {
-        this.senhaGerencia = senhaGerencia;
+    public void setSenhaGerencia(String senha) {
+        this.senha = senha;
     }
 
     // Métodos
