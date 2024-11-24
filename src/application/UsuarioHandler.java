@@ -3,6 +3,8 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Usuario;
+
 public class UsuarioHandler {
     private List<Usuario> usuarios;
     private Usuario usuarioAtual;
@@ -22,7 +24,7 @@ public class UsuarioHandler {
 
     public boolean login(String login, String senha) {
         for (Usuario usuario : usuarios) {
-            if(usuario.getEmail().equals(login) && usuario.getSenha().equals(senha)) {
+            if (usuario.getEmail().equals(login) && usuario.getSenha().equals(senha)) {
                 usuarioAtual = usuario;
                 return true;
             }
@@ -30,16 +32,12 @@ public class UsuarioHandler {
         return false;
     }
 
-    public Usuario getUsuarioAtual(){
+    public Usuario getUsuarioAtual() {
         return usuarioAtual;
     }
 
-    public boolean hasActiveUser(){
+    public boolean hasActiveUser() {
         return this.usuarioAtual != null;
     }
-
-
-
-
 
 }

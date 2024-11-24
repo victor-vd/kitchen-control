@@ -5,9 +5,9 @@ public class Garcom extends Funcionario {
     private String[] pedidosAtivos;
 
     // Construtor
-    public Garcom(int idFuncionario, String nome, String email, int cpf,
+    public Garcom(int idFuncionario, String nome, String email, String senha, int cpf,
             int mesasAtendidas, String[] pedidosAtivos) {
-        super(idFuncionario, nome, email, cpf);
+        super(idFuncionario, nome, email, senha, cpf);
         this.mesasAtendidas = mesasAtendidas;
         this.pedidosAtivos = pedidosAtivos;
     }

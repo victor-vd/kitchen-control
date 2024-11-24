@@ -4,8 +4,8 @@ public class Cozinheiro extends Funcionario {
     private String[] pedidosAtivos;
 
     // Construtor
-    public Cozinheiro(int idFuncionario, String nome, String email, int cpf, String[] pedidosAtivos) {
-        super(idFuncionario, nome, email, cpf);
+    public Cozinheiro(int idFuncionario, String nome, String email, String senha, int cpf, String[] pedidosAtivos) {
+        super(idFuncionario, nome, email, senha, cpf);
         this.pedidosAtivos = pedidosAtivos;
     }
 

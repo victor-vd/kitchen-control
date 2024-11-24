@@ -1,17 +1,12 @@
 package Models;
 
-public class Funcionario {
+public class Funcionario extends Usuario {
     private int idFuncionario;
-    private String nome;
-    private String email;
-    private int cpf;
 
     // Construtor
-    public Funcionario(int idFuncionario, String nome, String email, int cpf) {
+    public Funcionario(int idFuncionario, String nome, String email, String senha, int cpf) {
+        super(nome, email, senha, cpf);
         this.idFuncionario = idFuncionario;
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
     }
 
     // Getters e Setters
@@ -21,30 +16,6 @@ public class Funcionario {
 
     public void setIdFuncionario(int idFuncionario) {
         this.idFuncionario = idFuncionario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
     }
 
     // Métodos
