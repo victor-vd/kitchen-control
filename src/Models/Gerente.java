@@ -4,27 +4,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import application.UsuarioHandler;;
 
-public class Gerente {
+public class Gerente extends Usuario {
     Scanner sc = new Scanner(System.in);
     private String email;
     private String identificacao;
-    private String senha;
 
     // Construtor
-    public Gerente(String email, String identificacao, String senha) {
-        this.email = email;
+    public Gerente(String email, String senha, String nome, int cpf, String identificacao) {
+        super(email, senha, nome, cpf);
         this.identificacao = identificacao;
-        this.senha = senha;
     }
 
     // Getters e Setters
-    public String getEmailGerencia() {
-        return email;
-    }
-
-    public void setEmailGerencia(String email) {
-        this.email = email;
-    }
 
     public String getIdGerencia() {
         return identificacao;
@@ -32,14 +23,6 @@ public class Gerente {
 
     public void setIdGerencia(String identificacao) {
         this.identificacao = identificacao;
-    }
-
-    public String getSenhaGerencia() {
-        return senha;
-    }
-
-    public void setSenhaGerencia(String senha) {
-        this.senha = senha;
     }
 
     // Métodos

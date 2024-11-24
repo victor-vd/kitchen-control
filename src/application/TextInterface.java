@@ -1,10 +1,15 @@
 package application;
 
+import Models.Cozinheiro;
+import Models.Garcom;
+import Models.Gerente;
+import Models.Usuario;
+
 import java.util.Scanner;
 
 public class TextInterface {
-    private Scanner scan;
-    private UsuarioHandler userHandler;
+    private final Scanner scan;
+    private final UsuarioHandler userHandler;
 
     public TextInterface(Scanner scan, UsuarioHandler userHandler) {
         this.scan = scan;
@@ -22,8 +27,14 @@ public class TextInterface {
     }
 
     public void registro() {
-
         int escolha;
+        String nome;
+        String senha;
+        int cpf;
+        String email;
+
+        Usuario newUsuario;
+
 
         System.out.println("Como gostaria de se registrar?");
         System.out.println("1 - Como Gerente" +
@@ -32,8 +43,34 @@ public class TextInterface {
 
         escolha = scan.nextInt();
 
+        System.out.println("Por favor, digite seu nome: ");
+        nome = scan.nextLine();
+        System.out.println("Digite seu email: ");
+        email = scan.nextLine();
+
+        System.out.println("Digite sua senha: ");
+        senha = scan.nextLine();
+
+        System.out.println("Digite seu CPF (Apenas números): ");
+        cpf = Integer.parseInt(scan.nextLine());
+
+
         switch (escolha) {
             case 1:
+                newUsuario = new Gerente(email, senha, nome, cpf, "BANANA");
+                break;
+
+            case 2:
+                newUsuario = new Cozinheiro(userHandler.getNumeroFuncionarios()+1,
+                        email,
+                        senha,
+                        nome,
+                        cpf);
+                break;
+            case 3:
+                newUsuario = new Garcom(userHandler.getNumeroFuncionarios()+1,
+                        email, senha, nome, cpf, 0);
+                break;
 
         }
 
@@ -47,7 +84,9 @@ public class TextInterface {
         System.out.println("Digite seu senha");
         String senha = scan.nextLine();
 
-        userHandler.login(email, senha);
+        if(!userHandler.login(email, senha)){
+            System.out.println("Usuário Não Encontrado");
+        }
 
     }
 
