@@ -8,10 +8,8 @@ public class Bebida extends Item {
     private boolean alcoolica;
 
     // Construtor
-    public Bebida(String nomeItem, float precoItem, List<String> ingredientes, String tamanhoMl, boolean alcoolica,
-            List<String> opcoesEspeciais, List<String> itensAdicionados, List<String> itensRemovidos,
-            List<String> outrasObservacoes) {
-        super(nomeItem, precoItem, ingredientes, opcoesEspeciais, itensAdicionados, itensRemovidos, outrasObservacoes);
+    public Bebida(String nomeItem, float precoItem, List<String> ingredientes, String tamanhoMl, boolean alcoolica) {
+        super(nomeItem, precoItem, ingredientes);
         this.tamanhoMl = tamanhoMl;
         this.alcoolica = alcoolica;
     }

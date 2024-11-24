@@ -6,7 +6,7 @@ import java.util.List;
 import Models.Usuario;
 
 public class UsuarioHandler {
-    private List<Usuario> usuarios;
+    private static List<Usuario> usuarios;
     private Usuario usuarioAtual;
 
     public UsuarioHandler() {
@@ -14,12 +14,13 @@ public class UsuarioHandler {
         this.usuarioAtual = null;
     }
 
-    public void adicionarUsuario(Usuario usuario) {
+    public static void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
 
-    public void removerUsuario(Usuario usuario) {
-        usuarios.remove(usuario);
+    public static boolean removerUsuario(int cpf) {
+        boolean removed = usuarios.removeIf(pojo -> pojo.getCPF() == cpf);
+        return removed;
     }
 
     public boolean login(String login, String senha) {

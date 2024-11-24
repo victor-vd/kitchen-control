@@ -7,10 +7,8 @@ public class Comida extends Item {
     private String tamanhoGr;
 
     // Construtor
-    public Comida(String nomeItem, float precoItem, List<String> ingredientes, String tamanhoGr, String receita,
-            List<String> opcoesEspeciais, List<String> itensAdicionados, List<String> itensRemovidos,
-            List<String> outrasObservacoes) {
-        super(nomeItem, precoItem, ingredientes, opcoesEspeciais, itensAdicionados, itensRemovidos, outrasObservacoes);
+    public Comida(String nomeItem, float precoItem, List<String> ingredientes, String tamanhoGr) {
+        super(nomeItem, precoItem, ingredientes);
         this.tamanhoGr = tamanhoGr;
     }
 

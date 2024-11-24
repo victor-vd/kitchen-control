@@ -13,15 +13,10 @@ public class Item {
     private List<String> outrasObservacoes;
 
     // Construtor
-    public Item(String nomeItem, float precoItem, List<String> ingredientes, List<String> opcoesEspeciais,
-            List<String> itensAdicionados, List<String> itensRemovidos, List<String> outrasObservacoes) {
+    public Item(String nomeItem, float precoItem, List<String> ingredientes) {
         this.nomeItem = nomeItem;
         this.precoItem = precoItem;
         this.ingredientes = ingredientes;
-        this.opcoesEspeciais = opcoesEspeciais;
-        this.itensAdicionados = itensAdicionados;
-        this.itensRemovidos = itensRemovidos;
-        this.outrasObservacoes = outrasObservacoes;
     }
 
     // Métodos comuns
