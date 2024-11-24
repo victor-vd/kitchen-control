@@ -6,7 +6,6 @@ public class Cozinheiro extends Funcionario {
     // Construtor
     public Cozinheiro(int idFuncionario, String nome, String email, String senha, int cpf) {
         super(idFuncionario, nome, email, senha, cpf);
-        this.pedidosAtivos = pedidosAtivos;
     }
 
     // Getters e Setters

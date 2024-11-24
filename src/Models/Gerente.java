@@ -6,7 +6,6 @@ import application.UsuarioHandler;;
 
 public class Gerente extends Usuario {
     Scanner sc = new Scanner(System.in);
-    private String email;
     private String identificacao;
 
     // Construtor
