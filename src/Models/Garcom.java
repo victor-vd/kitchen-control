@@ -1,15 +1,18 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Garcom extends Funcionario {
     private int mesasAtendidas;
-    private String[] pedidosAtivos;
+    private final List<Pedido> pedidosAtivos;
 
     // Construtor
     public Garcom(int idFuncionario, String nome, String email, String senha, int cpf,
-            int mesasAtendidas, String[] pedidosAtivos) {
+            int mesasAtendidas) {
         super(idFuncionario, nome, email, senha, cpf);
         this.mesasAtendidas = mesasAtendidas;
-        this.pedidosAtivos = pedidosAtivos;
+        this.pedidosAtivos = new ArrayList<>();
     }
 
     // Getters e Setters
@@ -21,12 +24,8 @@ public class Garcom extends Funcionario {
         this.mesasAtendidas = mesasAtendidas;
     }
 
-    public String[] getPedidosAtivos() {
+    public List<Pedido> getPedidosAtivos() {
         return pedidosAtivos;
-    }
-
-    public void setPedidosAtivos(String[] pedidosAtivos) {
-        this.pedidosAtivos = pedidosAtivos;
     }
 
     // Métodos

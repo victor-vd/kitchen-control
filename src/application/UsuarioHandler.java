@@ -3,11 +3,13 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Funcionario;
 import Models.Usuario;
 
 public class UsuarioHandler {
-    private List<Usuario> usuarios;
+    private final List<Usuario> usuarios;
     private Usuario usuarioAtual;
+    private int numeroFuncionarios;
 
     public UsuarioHandler() {
         usuarios = new ArrayList<Usuario>();
@@ -16,6 +18,9 @@ public class UsuarioHandler {
 
     public void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
+        if(usuario instanceof Funcionario){
+            numeroFuncionarios++;
+        }
     }
 
     public void removerUsuario(Usuario usuario) {
@@ -40,4 +45,7 @@ public class UsuarioHandler {
         return this.usuarioAtual != null;
     }
 
+    public int getNumeroFuncionarios() {
+        return numeroFuncionarios;
+    }
 }
