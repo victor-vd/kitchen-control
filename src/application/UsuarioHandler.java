@@ -7,7 +7,7 @@ import Models.Funcionario;
 import Models.Usuario;
 
 public class UsuarioHandler {
-    private static List<Usuario> usuarios;
+    private final List<Usuario> usuarios;
     private Usuario usuarioAtual;
     private static int numeroFuncionarios;
 
@@ -16,14 +16,14 @@ public class UsuarioHandler {
         this.usuarioAtual = null;
     }
 
-    public static void adicionarUsuario(Usuario usuario) {
+    public void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
         if (usuario instanceof Funcionario) {
             numeroFuncionarios++;
         }
     }
 
-    public static boolean removerUsuario(int cpf) {
+    public boolean removerUsuario(int cpf) {
         boolean removed = usuarios.removeIf(pojo -> pojo.getCPF() == cpf);
         return removed;
     }
