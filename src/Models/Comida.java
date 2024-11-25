@@ -25,11 +25,11 @@ public class Comida extends Item {
     }
 
     // Getters e Setters específicos
-    public int getTamanhoGr() {
+    public int getTamanho() {
         return tamanhoGr;
     }
 
-    public void setTamanhoGr(int tamanhoGr) {
+    public void setTamanho(int tamanho) {
         this.tamanhoGr = tamanhoGr;
     }
 }

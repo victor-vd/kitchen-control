@@ -46,7 +46,21 @@ public class Cardapio implements Listaveis {
 
     @Override
     public void exibirTabulado() {
+        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+        StringBuilder sBuilder = new StringBuilder();
+        for(Item item: itens){
 
+            if(item instanceof Bebida){
+                sBuilder.append("Bebida");
+            }
+            if(item instanceof Comida){
+                sBuilder.append("Comida");
+            }
+            sBuilder.append(item.getNomeItem()).append("\t|\t");
+            sBuilder.append(item.getPrecoItem()).append("\t|\t");
+            sBuilder.append(item.getTamanho()).append("\t|\t");
+            sBuilder.append(item.stringIngredientes()).append("\t|\t");
+        }
     }
 
     public boolean removerItemPorNome(String nomePrato) {

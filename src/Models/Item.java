@@ -2,7 +2,7 @@ package Models;
 
 import java.util.List;
 
-public class Item {
+public abstract class Item {
     // Atributos comuns
     private String nomeItem;
     private float precoItem;
@@ -91,5 +91,19 @@ public class Item {
 
     public void setOutrasObservacoes(List<String> outrasObservacoes) {
         this.outrasObservacoes = outrasObservacoes;
+    }
+
+    public abstract int getTamanho();
+
+    public abstract void setTamanho(int tamanho);
+
+    public String stringIngredientes(){
+        StringBuilder strBuilder = new StringBuilder();
+
+        for (String ingrediente: ingredientes){
+            strBuilder.append(ingrediente).append(", ");
+        }
+
+        return strBuilder.toString();
     }
 }

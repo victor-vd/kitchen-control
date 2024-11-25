@@ -1,11 +1,12 @@
 package Models;
 
+import application.Listaveis;
+
 import java.util.List;
 
-public class Pedido {
+public class Pedido implements Listaveis {
     // Atributos
     private final List<Item> itens;
-    private String codigoPedido;
     private String idPedido;
     private String nomeCliente;
     private String statusPedido;
@@ -41,14 +42,6 @@ public class Pedido {
     }
 
     // Getters e setters (opcional, dependendo da necessidade)
-    public String getCodigoPedido() {
-        return codigoPedido;
-    }
-
-    public void setCodigoPedido(String codigoPedido) {
-        this.codigoPedido = codigoPedido;
-    }
-
     public String getIdPedido() {
         return idPedido;
     }
@@ -91,5 +84,26 @@ public class Pedido {
 
     public void setParaLevar(boolean paraLevar) {
         this.paraLevar = paraLevar;
+    }
+
+    @Override
+    public void exibirTabulado() {
+        System.out.println("Id Pedido: " + getIdPedido() + "\n");
+        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t|");
+        StringBuilder sBuilder = new StringBuilder();
+        for(Item item: itens){
+
+            if(item instanceof Bebida){
+                sBuilder.append("Bebida");
+            }
+            if(item instanceof Comida){
+                sBuilder.append("Comida");
+            }
+            sBuilder.append(item.getNomeItem()).append("\t|\t");
+            sBuilder.append(item.getPrecoItem()).append("\t|\t");
+            sBuilder.append(item.getTamanho()).append("\t|\t");
+            sBuilder.append(item.stringIngredientes()).append("\t|\t");
+            sBuilder.append("\n");
+        }
     }
 }

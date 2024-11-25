@@ -52,20 +52,20 @@ public class UsuarioHandler implements Listaveis {
 
     @Override
     public void exibirTabulado() {
-        System.out.println("| Tipo de Usuário |\t| Nome |\t| E-mail\t| CPF |");
+        System.out.println("| Tipo de Usuário\t|\t Nome\t|\t E-mail\t|\t CPF \t|");
         StringBuilder sBuilder = new StringBuilder();
         for (Usuario usuario : usuarios) {
             sBuilder.append("| ");
             if (usuario instanceof Garcom) {
-                sBuilder.append("Garçom");
+                sBuilder.append("Garçom\t|\t");
             } else if (usuario instanceof Cozinheiro) {
-                sBuilder.append("Cozinheiro");
+                sBuilder.append("Cozinheiro\t|\t");
             } else if (usuario instanceof Gerente) {
-                sBuilder.append("Gerente");
+                sBuilder.append("Gerente\t|\t");
             }
-            sBuilder.append(usuario.getNome()).append(" |\t");
-            sBuilder.append(usuario.getEmail()).append(" |\t");
-            sBuilder.append(usuario.getCPF()).append(" |\t");
+            sBuilder.append(usuario.getNome()).append("\t|\t");
+            sBuilder.append(usuario.getEmail()).append("\t|\t");
+            sBuilder.append(usuario.getCPF()).append("\t|\t");
             sBuilder.append("\n");
         }
         System.out.println(sBuilder);
