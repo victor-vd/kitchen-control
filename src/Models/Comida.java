@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Comida extends Item {
     // Atributos específicos
-    private String tamanhoGr;
+    private int tamanhoGr;
 
     // Construtor
-    public Comida(String nomeItem, float precoItem, List<String> ingredientes, String tamanhoGr) {
+    public Comida(String nomeItem, float precoItem, List<String> ingredientes, int tamanhoGr) {
         super(nomeItem, precoItem, ingredientes);
         this.tamanhoGr = tamanhoGr;
     }
@@ -19,17 +19,17 @@ public class Comida extends Item {
         System.out.println("Tamanho (g): " + tamanhoGr);
     }
 
-    public void modificarDetalhes(String novoTamanho) {
+    public void modificarDetalhes(int novoTamanho) {
         this.tamanhoGr = novoTamanho;
         System.out.println("Detalhes específicos da comida atualizados.");
     }
 
     // Getters e Setters específicos
-    public String getTamanhoGr() {
+    public int getTamanhoGr() {
         return tamanhoGr;
     }
 
-    public void setTamanhoGr(String tamanhoGr) {
+    public void setTamanhoGr(int tamanhoGr) {
         this.tamanhoGr = tamanhoGr;
     }
 }

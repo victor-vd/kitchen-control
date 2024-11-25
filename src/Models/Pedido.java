@@ -7,7 +7,6 @@ public class Pedido {
     private String nomeCliente;
     private String statusPedido;
     private int tempoEstimado;
-    private float taxaServico;
     private double somaTotal;
     private boolean paraLevar;
 
@@ -63,14 +62,6 @@ public class Pedido {
 
     public void setTempoEstimado(int tempoEstimado) {
         this.tempoEstimado = tempoEstimado;
-    }
-
-    public float getTaxaServico() {
-        return taxaServico;
-    }
-
-    public void setTaxaServico(float taxaServico) {
-        this.taxaServico = taxaServico;
     }
 
     public Double getSomaTotal() {
