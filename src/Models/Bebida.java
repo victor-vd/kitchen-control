@@ -29,11 +29,11 @@ public class Bebida extends Item {
     }
 
     // Getters e Setters específicos
-    public int getTamanhoMl() {
+    public int getTamanho() {
         return tamanhoMl;
     }
 
-    public void setTamanhoMl(int tamanhoMl) {
+    public void setTamanho(int tamanhoMl) {
         this.tamanhoMl = tamanhoMl;
     }
 

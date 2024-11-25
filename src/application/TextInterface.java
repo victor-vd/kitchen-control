@@ -306,7 +306,7 @@ public class TextInterface implements UserInterface {
                 System.out.print("Digite o nome do ingrediente: ");
                 ingredientes.add(scan.next());
             }
-            itens.add(new Item(nomeItem, precoItem, ingredientes));
+            //itens.add(new Item(nomeItem, precoItem, ingredientes));
         }
 
         mesaSelecionada.adicionarPedido(new Pedido(codigoPedido, idPedido, nomeCliente, statusPedido,
