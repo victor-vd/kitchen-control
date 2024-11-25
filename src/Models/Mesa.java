@@ -7,6 +7,7 @@ public class Mesa {
     // Attributes
     private String idMesa;
     private String garcomResponsavel;
+    private double somaTotal;
     private List<Pedido> pedidos;
 
     // Constructor
@@ -15,10 +16,19 @@ public class Mesa {
         this.pedidos = new ArrayList<>();
     }
 
-    // Methods
+    // Métodos
+    public double getSomaTotal() {
+        double soma = 0;
+        for (Pedido pedido : pedidos) {
+            soma += pedido.getSomaPedido();
+        }
+        return soma;
+    }
+
     public void adicionarPedido(Pedido pedido) {
         pedidos.add(pedido);
         System.out.println("Pedido adicionado.");
+        this.somaTotal = getSomaTotal();
     }
 
     public void desocuparMesa() {

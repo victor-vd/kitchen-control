@@ -4,6 +4,11 @@ import application.Listaveis;
 
 import java.util.List;
 
+/**
+ * A classe Pedido representa um pedido realizado por um cliente.
+ * Implementa a interface Listaveis.
+ */
+
 public class Pedido implements Listaveis {
     // Atributos
     private final List<Item> itens;
@@ -12,28 +17,42 @@ public class Pedido implements Listaveis {
     private String statusPedido;
     private String observacao;
     private int tempoEstimado;
-    private double somaTotal;
+    private double somaPedido;
     private boolean paraLevar;
 
-    public Pedido(String idPedido, String nomeCliente, String statusPedido, String observacao,
-            int tempoEstimado, double somaTotal, boolean paraLevar, List<Item> itens) {
+    // Construtor da classe Pedido.
+    public Pedido(String idPedido, String nomeCliente, String statusPedido,
+            int tempoEstimado, boolean paraLevar, List<Item> itens) {
         this.itens = itens;
         this.idPedido = idPedido;
         this.nomeCliente = nomeCliente;
         this.statusPedido = statusPedido;
         this.observacao = "\n - " + observacao;
         this.tempoEstimado = tempoEstimado;
-        this.somaTotal = somaTotal;
         this.paraLevar = paraLevar;
+        this.somaPedido = getSomaPedido();
     }
 
     // Métodos
+
+    // Adiciona um item ao pedido e atualiza a soma total.
     public void adicionarItem(Item item) {
         this.itens.add(item);
+        this.somaPedido = getSomaPedido();
     }
 
+    // Calcula a soma total do pedido.
+    public double getSomaPedido() {
+        double soma = 0;
+        for (Item item : itens) {
+            soma += item.getPrecoItem();
+        }
+        return soma;
+    }
+
+    // Getters e setters
     public void setObservacao(String observacaoAdd) {
-        this.observacao += "\n - " + observacaoAdd;
+        this.observacao += " - " + observacaoAdd + "\n";
         System.out.println("Observação adicionada: " + observacaoAdd);
     }
 
@@ -41,7 +60,6 @@ public class Pedido implements Listaveis {
         return observacao;
     }
 
-    // Getters e setters (opcional, dependendo da necessidade)
     public String getIdPedido() {
         return idPedido;
     }
@@ -75,7 +93,7 @@ public class Pedido implements Listaveis {
     }
 
     public Double getSomaTotal() {
-        return somaTotal;
+        return somaPedido;
     }
 
     public boolean getParaLevar() {
@@ -86,24 +104,15 @@ public class Pedido implements Listaveis {
         this.paraLevar = paraLevar;
     }
 
+    // Exibe os detalhes do pedido de forma tabulada.
     @Override
     public void exibirTabulado() {
-        System.out.println("Id Pedido: " + getIdPedido() + "\n");
-        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t|");
-        StringBuilder sBuilder = new StringBuilder();
-        for(Item item: itens){
-
-            if(item instanceof Bebida){
-                sBuilder.append("Bebida");
-            }
-            if(item instanceof Comida){
-                sBuilder.append("Comida");
-            }
-            sBuilder.append(item.getNomeItem()).append("\t|\t");
-            sBuilder.append(item.getPrecoItem()).append("\t|\t");
-            sBuilder.append(item.getTamanho()).append("\t|\t");
-            sBuilder.append(item.stringIngredientes()).append("\t|\t");
-            sBuilder.append("\n");
+        System.out.printf("Id Pedido: %s%n", getIdPedido());
+        System.out.printf("| %-12s | %-12s | %-12s | %-12s |%n", "Tipo de Item", "Nome", "Preço", "Peso");
+        for (Item item : itens) {
+            String tipoItem = item instanceof Bebida ? "Bebida" : item instanceof Comida ? "Comida" : "Outro";
+            System.out.printf("| %-12s | %-12s | %-12.2f | %-12s |%n", tipoItem, item.getNomeItem(),
+                    item.getPrecoItem(), item.getTamanho());
         }
     }
 }

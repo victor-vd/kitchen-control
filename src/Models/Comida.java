@@ -12,19 +12,22 @@ public class Comida extends Item {
         this.tamanhoGr = tamanhoGr;
     }
 
-    // Métodos específicos
+    // Métodos
     @Override
     public void exibirDetalhes() {
         super.exibirDetalhes(); // Exibe os detalhes comuns
         System.out.println("Tamanho (g): " + tamanhoGr);
     }
 
-    public void modificarDetalhes(int novoTamanho) {
+    public void modificarDetalhes(int novoTamanho, List<String> novosIngredientes, float novoPreco, String novoNome) {
         this.tamanhoGr = novoTamanho;
+        setIngredientes(novosIngredientes);
+        setPrecoItem(novoPreco);
+        setNomeItem(novoNome);
         System.out.println("Detalhes específicos da comida atualizados.");
     }
 
-    // Getters e Setters específicos
+    // Getters e Setters
     public int getTamanho() {
         return tamanhoGr;
     }

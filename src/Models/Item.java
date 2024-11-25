@@ -19,7 +19,7 @@ public abstract class Item {
         this.ingredientes = ingredientes;
     }
 
-    // Métodos comuns
+    // Métodos
     public void exibirDetalhes() {
         System.out.println("Nome do Item: " + nomeItem);
         System.out.println("Preço: R$ " + precoItem);
@@ -30,9 +30,10 @@ public abstract class Item {
         System.out.println("Outras Observações: " + String.join(", ", outrasObservacoes));
     }
 
-    public void modificarDetalhes(String novoNome, float novoPreco) {
+    public void modificarDetalhes(String novoNome, float novoPreco, List<String> ingredientes) {
         this.nomeItem = novoNome;
         this.precoItem = novoPreco;
+        this.ingredientes = ingredientes;
         System.out.println("Detalhes do item atualizados.");
     }
 
@@ -97,10 +98,10 @@ public abstract class Item {
 
     public abstract void setTamanho(int tamanho);
 
-    public String stringIngredientes(){
+    public String stringIngredientes() {
         StringBuilder strBuilder = new StringBuilder();
 
-        for (String ingrediente: ingredientes){
+        for (String ingrediente : ingredientes) {
             strBuilder.append(ingrediente).append(", ");
         }
 

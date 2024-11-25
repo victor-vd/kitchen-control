@@ -28,68 +28,60 @@ public class Cardapio implements Listaveis {
         adicionarComida(new Comida("Bolo", 18.0f, Arrays.asList("Farinha", "Açúcar", "Ovos"), 350));
         adicionarComida(new Comida("Sorvete", 8.0f, Arrays.asList("Leite", "Açúcar", "Baunilha"), 100));
 
+        itens.sort((u1, u2) -> u1.getNomeItem().compareTo(u2.getNomeItem()));
     }
 
     public void adicionarBebida(Bebida bebida) {
         itens.add(bebida);
+        itens.sort((u1, u2) -> u1.getNomeItem().compareTo(u2.getNomeItem()));
     }
 
     public void adicionarComida(Comida comida) {
         itens.add(comida);
+        itens.sort((u1, u2) -> u1.getNomeItem().compareTo(u2.getNomeItem()));
     }
 
-    public void listarComidas() {
-        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
-        StringBuilder sBuilder = new StringBuilder();
-        for (Item item : itens) {
-            sBuilder.append(itens.indexOf(item)).append("\t|\t");
-            if (item instanceof Comida) {
-                sBuilder.append("Comida");
-                sBuilder.append(item.getNomeItem()).append("\t|\t");
-                sBuilder.append(item.getPrecoItem()).append("\t|\t");
-                sBuilder.append(item.getTamanho()).append("\t|\t");
-                sBuilder.append(item.stringIngredientes()).append("\t|\t");
-            }
-        }
-    }
-
-    public void listarBebidas() {
-        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
-        StringBuilder sBuilder = new StringBuilder();
-        for (Item item : itens) {
-            sBuilder.append(itens.indexOf(item)).append("\t|\t");
-            if (item instanceof Bebida) {
-                sBuilder.append("Bebida");
-                sBuilder.append(item.getNomeItem()).append("\t|\t");
-                sBuilder.append(item.getPrecoItem()).append("\t|\t");
-                sBuilder.append(item.getTamanho()).append("\t|\t");
-                sBuilder.append(item.stringIngredientes()).append("\t|\t");
-            }
-        }
+    public List<Item> getItens() {
+        return itens;
     }
 
     public boolean removerItemPorNome(String nomePrato) {
         return itens.removeIf(item -> item.getNomeItem().equalsIgnoreCase(nomePrato));
     }
 
+    public void listarComidas() {
+        System.out.printf("| %-4s | %-15s | %-20s | %-10s | %-10s | %-30s |\n", "Id", "Tipo de Item", "Nome", "Preço",
+                "Peso", "Ingredientes");
+        for (Item item : itens) {
+            if (item instanceof Comida) {
+                System.out.printf("| %-4d | %-15s | %-20s | %-10.2f | %-10d | %-30s |\n",
+                        itens.indexOf(item), "Comida", item.getNomeItem(), item.getPrecoItem(), item.getTamanho(),
+                        item.stringIngredientes());
+            }
+        }
+    }
+
+    public void listarBebidas() {
+        System.out.printf("| %-4s | %-15s | %-20s | %-10s | %-10s | %-30s |\n", "Id", "Tipo de Item", "Nome", "Preço",
+                "Peso", "Ingredientes");
+        for (Item item : itens) {
+            if (item instanceof Bebida) {
+                System.out.printf("| %-4d | %-15s | %-20s | %-10.2f | %-10d | %-30s |\n",
+                        itens.indexOf(item), "Bebida", item.getNomeItem(), item.getPrecoItem(), item.getTamanho(),
+                        item.stringIngredientes());
+            }
+        }
+    }
+
     @Override
     public void exibirTabulado() {
-        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
-        StringBuilder sBuilder = new StringBuilder();
+        System.out.printf("| %-4s | %-15s | %-20s | %-10s | %-10s | %-30s |\n", "Id", "Tipo de Item", "Nome", "Preço",
+                "Peso", "Ingredientes");
         for (Item item : itens) {
-            sBuilder.append(itens.indexOf(item)).append("\t|\t");
-
-            if (item instanceof Bebida) {
-                sBuilder.append("Bebida\t|\t");
-            }
-
-            if (item instanceof Comida) {
-                sBuilder.append("Comida\t|\t");
-            }
-            sBuilder.append(item.getNomeItem()).append("\t|\t");
-            sBuilder.append(item.getPrecoItem()).append("\t|\t");
-            sBuilder.append(item.getTamanho()).append("\t|\t");
-            sBuilder.append(item.stringIngredientes()).append("\t|\t");
+            String tipoItem = item instanceof Bebida ? "Bebida" : "Comida";
+            System.out.printf("| %-4d | %-15s | %-20s | %-10.2f | %-10d | %-30s |\n",
+                    itens.indexOf(item), tipoItem, item.getNomeItem(), item.getPrecoItem(), item.getTamanho(),
+                    item.stringIngredientes());
         }
     }
 }

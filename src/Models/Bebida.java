@@ -14,7 +14,7 @@ public class Bebida extends Item {
         this.alcoolica = alcoolica;
     }
 
-    // Métodos específicos
+    // Métodos
     @Override
     public void exibirDetalhes() {
         super.exibirDetalhes(); // Exibe os detalhes comuns
@@ -28,7 +28,7 @@ public class Bebida extends Item {
         System.out.println("Detalhes específicos da bebida atualizados.");
     }
 
-    // Getters e Setters específicos
+    // Getters e Setters
     public int getTamanho() {
         return tamanhoMl;
     }

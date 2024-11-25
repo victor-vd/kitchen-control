@@ -1,11 +1,13 @@
 package Models;
 
 public class Usuario {
+    // Atributos privados do usuário
     private String email;
     private String senha;
     private String nome;
     private int cpf;
 
+    // Construtor da classe Usuario
     public Usuario(String email, String senha, String nome, int cpf) {
         this.email = email;
         this.senha = senha;
@@ -13,6 +15,7 @@ public class Usuario {
         this.cpf = cpf;
     }
 
+    // Getters e setters
     public String getEmail() {
         return email;
     }

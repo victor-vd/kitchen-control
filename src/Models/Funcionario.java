@@ -17,10 +17,4 @@ public class Funcionario extends Usuario {
     public void setIdFuncionario(int idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
-
-    // Métodos
-    public void visualizarETA() {
-        // Lógica para visualizar ETA (tempo estimado de entrega)
-        System.out.println("Visualizando ETA...");
-    }
 }

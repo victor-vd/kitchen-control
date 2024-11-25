@@ -12,19 +12,18 @@ public class Gerente extends Usuario {
         this.identificacao = identificacao;
     }
 
-    // Getters e Setters
+    // Métodos
+    public void gerenciarFuncionarios() {
 
+    }
+
+    // Getters e Setters
     public String getIdGerencia() {
         return identificacao;
     }
 
     public void setIdGerencia(String identificacao) {
         this.identificacao = identificacao;
-    }
-
-    // Métodos
-    public void gerenciarFuncionarios() {
-
     }
 
 }

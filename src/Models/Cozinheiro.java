@@ -1,35 +1,22 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cozinheiro extends Funcionario {
-    private String[] pedidosAtivos;
+    private final List<Pedido> pedidos;
 
     // Construtor
     public Cozinheiro(int idFuncionario, String nome, String email, String senha, int cpf) {
         super(idFuncionario, nome, email, senha, cpf);
+        this.pedidos = new ArrayList<>();
     }
 
-    // Getters e Setters
-    public String[] getPedidosAtivos() {
-        return pedidosAtivos;
+    public List<Pedido> getPedidosAtivos() {
+        return pedidos;
     }
 
-    public void setPedidosAtivos(String[] pedidosAtivos) {
-        this.pedidosAtivos = pedidosAtivos;
-    }
-
-    // Métodos
-    public void gerenciarPratos() {
-        // Lógica para gerenciar pratos
-        System.out.println("Gerenciando pratos...");
-    }
-
-    public void selecionarCozinheiro() {
-        // Lógica para selecionar cozinheiro
-        System.out.println("Selecionando cozinheiro...");
-    }
-
-    public void exibirReceita() {
-        // Lógica para exibir receita
-        System.out.println("Exibindo receita...");
+    public void adicionarPedidoAtivo(Pedido pedidosAtivo) {
+        this.pedidos.add(pedidosAtivo);
     }
 }
