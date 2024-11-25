@@ -46,7 +46,7 @@ public class Cardapio implements Listaveis {
 
     @Override
     public void exibirTabulado() {
-        System.out.println("Id\t|\t| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
         StringBuilder sBuilder = new StringBuilder();
         for(Item item: itens){
             sBuilder.append(itens.indexOf(item)).append("\t|\t");
