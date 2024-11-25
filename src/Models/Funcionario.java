@@ -5,7 +5,7 @@ public class Funcionario extends Usuario {
 
     // Construtor
     public Funcionario(int idFuncionario, String nome, String email, String senha, int cpf) {
-        super(nome, email, senha, cpf);
+        super(email, senha, nome, cpf);
         this.idFuncionario = idFuncionario;
     }
 

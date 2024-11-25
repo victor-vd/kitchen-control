@@ -1,5 +1,6 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +8,7 @@ public class Cardapio {
     private static List<Item> itens;
 
     public Cardapio() {
+        itens = new ArrayList<>();
         adicionarBebida(new Bebida("Coca-Cola", 5.0f, Arrays.asList("Água", "Açúcar", "Corante"), 350, false));
         adicionarBebida(new Bebida("Pepsi", 4.5f, Arrays.asList("Água", "Açúcar", "Corante"), 350, false));
         adicionarBebida(new Bebida("Suco de Laranja", 6.0f, Arrays.asList("Laranja", "Água"), 300, false));
@@ -37,7 +39,7 @@ public class Cardapio {
 
     public void listarCardapio() {
         for (Item item : itens) {
-            System.out.println(item);
+            System.out.println(item + "\n");
         }
     }
 }

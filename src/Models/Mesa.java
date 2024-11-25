@@ -1,27 +1,36 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mesa {
     // Attributes
-    private int numeroMesa;
     private String idMesa;
     private String garcomResponsavel;
+    private List<Pedido> pedidos;
 
     // Constructor
-    public Mesa(int numeroMesa, String idMesa, String garcomResponsavel) {
-        this.numeroMesa = numeroMesa;
+    public Mesa(String idMesa) {
         this.idMesa = idMesa;
-        this.garcomResponsavel = garcomResponsavel;
+        this.pedidos = new ArrayList<>();
+    }
+
+    // Methods
+    public void adicionarPedido(Pedido pedido) {
+        pedidos.add(pedido);
+        System.out.println("Pedido adicionado.");
+    }
+
+    public void desocuparMesa() {
+        this.garcomResponsavel = "";
+        this.pedidos.removeAll(pedidos);
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
 
     // Getters and Setters
-    public int getNumeroMesa() {
-        return numeroMesa;
-    }
-
-    public void setNumeroMesa(int numeroMesa) {
-        this.numeroMesa = numeroMesa;
-    }
-
     public String getIdMesa() {
         return idMesa;
     }
@@ -34,13 +43,8 @@ public class Mesa {
         return garcomResponsavel;
     }
 
-    // Methods
     public void setGarcomResponsavel(String garcomResponsavel) {
         this.garcomResponsavel = garcomResponsavel;
         System.out.println("Garçom responsável: " + garcomResponsavel);
-    }
-
-    public void adicionarPedido(double valorPedido) {
-        System.out.println("Pedido adicionado.");
     }
 }

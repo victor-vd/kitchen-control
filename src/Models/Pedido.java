@@ -1,26 +1,44 @@
 package Models;
 
+import java.util.List;
+
 public class Pedido {
     // Atributos
+    private final List<Item> itens;
     private String codigoPedido;
     private String idPedido;
     private String nomeCliente;
     private String statusPedido;
+    private String observacao;
     private int tempoEstimado;
     private double somaTotal;
     private boolean paraLevar;
 
+    public Pedido(String codigoPedido, String idPedido, String nomeCliente, String statusPedido, String observacao,
+            int tempoEstimado, double somaTotal, boolean paraLevar, List<Item> itens) {
+        this.itens = itens;
+        this.codigoPedido = codigoPedido;
+        this.idPedido = idPedido;
+        this.nomeCliente = nomeCliente;
+        this.statusPedido = statusPedido;
+        this.observacao = "\n - " + observacao;
+        this.tempoEstimado = tempoEstimado;
+        this.somaTotal = somaTotal;
+        this.paraLevar = paraLevar;
+    }
+
     // Métodos
-    public void adicionarItem(String item, double valor, String tipo) {
-        this.somaTotal += valor;
+    public void adicionarItem(Item item) {
+        this.itens.add(item);
     }
 
-    public void adicionarObs(String observacao) {
-        System.out.println("Observação adicionada: " + observacao);
+    public void setObservacao(String observacaoAdd) {
+        this.observacao += "\n - " + observacaoAdd;
+        System.out.println("Observação adicionada: " + observacaoAdd);
     }
 
-    public void encerrarPedido() {
-        System.out.println("Pedido encerrado.");
+    public String getObservacao(String observacao) {
+        return observacao;
     }
 
     // Getters e setters (opcional, dependendo da necessidade)
@@ -68,7 +86,7 @@ public class Pedido {
         return somaTotal;
     }
 
-    public boolean isParaLevar() {
+    public boolean getParaLevar() {
         return paraLevar;
     }
 

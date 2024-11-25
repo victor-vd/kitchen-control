@@ -3,21 +3,35 @@ package application;
 import Models.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TextInterface {
     private final Scanner scan;
     private final UsuarioHandler userHandler;
-    Cardapio cardapio = new Cardapio();
+    private final Cardapio cardapio = new Cardapio();
+    private final List<Mesa> mesas = new ArrayList<>();
 
     public TextInterface(Scanner scan, UsuarioHandler userHandler) {
         this.scan = scan;
         this.userHandler = userHandler;
+        inicializarMesas();
+    }
 
+    private void inicializarMesas() {
+        mesas.add(new Mesa("d1"));
+        mesas.add(new Mesa("d2"));
+        mesas.add(new Mesa("d3"));
+        mesas.add(new Mesa("d4"));
+        mesas.add(new Mesa("d5"));
+        mesas.add(new Mesa("d6"));
+        mesas.add(new Mesa("f1"));
+        mesas.add(new Mesa("f2"));
     }
 
     public void start() {
         System.out.println("Bem vindo ao Sistema de Restaurante Unificado!");
+
         while (!userHandler.hasActiveUser()) {
             System.out.println("Ações Disponíveis: \n");
 
@@ -35,54 +49,6 @@ public class TextInterface {
             }
         }
     }
-
-    // public void registro() {
-    // int escolha;
-    // String nome;
-    // String senha;
-    // int cpf;
-    // String email;
-
-    // Usuario newUsuario;
-
-    // System.out.println("Como gostaria de se registrar?");
-    // System.out.println("0 - Voltar\n1 - Como Gerente" +
-    // "\n2 - Como Cozinheiro" +
-    // "\n3 - Como Garçom");
-
-    // escolha = scan.nextInt();
-
-    // System.out.println("Por favor, digite seu nome: ");
-    // nome = scan.nextLine();
-    // System.out.println("Digite seu email: ");
-    // email = scan.nextLine();
-
-    // System.out.println("Digite sua senha: ");
-    // senha = scan.nextLine();
-
-    // System.out.println("Digite seu CPF (Apenas números): ");
-    // cpf = Integer.parseInt(scan.nextLine());
-
-    // switch (escolha) {
-    // case 1:
-    // newUsuario = new Gerente(email, senha, nome, cpf, "BANANA");
-    // break;
-
-    // case 2:
-    // newUsuario = new Cozinheiro(userHandler.getNumeroFuncionarios() + 1,
-    // email,
-    // senha,
-    // nome,
-    // cpf);
-    // break;
-    // case 3:
-    // newUsuario = new Garcom(userHandler.getNumeroFuncionarios() + 1,
-    // email, senha, nome, cpf, 0);
-    // break;
-
-    // }
-
-    // }
 
     public void login() {
         System.out.println("Login");
@@ -105,10 +71,9 @@ public class TextInterface {
     public void menuGerente() {
         System.out.println("0 - Sair");
         System.out.println("1 - Gerenciar pratos");
-        System.out.println("2 - Adicionar pedido");
-        System.out.println("3 - Gerenciar Mesas");
-        System.out.println("4 - Consultar cardápio");
-        System.out.println("5 - Gerenciar Funcionários");
+        System.out.println("2 - Gerenciar Mesas");
+        System.out.println("3 - Consultar cardápio");
+        System.out.println("4 - Gerenciar Funcionários");
 
         switch (scan.nextInt()) {
             case 1:
@@ -116,14 +81,42 @@ public class TextInterface {
                 break;
             case 2:
 
+                System.out.println("Digite o id da mesa que você deseja gerenciar:");
+                String mesaId = scan.next();
+                Mesa mesaSelecionada = null;
+                for (Mesa mesa : mesas) {
+                    if (mesa.getIdMesa().equals(mesaId)) {
+                        mesaSelecionada = mesa;
+                        break;
+                    }
+                }
+                if (mesaSelecionada != null) {
+
+                    System.out.println("1 - Adicionar pedido");
+                    System.out.println("2 - Desocupar mesa");
+
+                    switch (scan.nextInt()) {
+                        case 1:
+
+                            adicionarPedido(mesaSelecionada);
+                            break;
+                        case 2:
+                            mesaSelecionada.desocuparMesa();
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                } else {
+                    System.out.println("Mesa não encontrada.");
+                }
+
                 break;
             case 3:
-
+                cardapio.listarCardapio();
                 break;
             case 4:
-
-                break;
-            case 5:
                 gerenciarFuncionarios();
                 break;
 
@@ -159,7 +152,6 @@ public class TextInterface {
             case 1:
                 gerenciarPratos();
                 break;
-
             default:
                 break;
 
@@ -277,5 +269,47 @@ public class TextInterface {
             default:
                 break;
         }
+    }
+
+    public void adicionarPedido(Mesa mesaSelecionada) {
+        System.out.print("Digite o código do pedido: ");
+        String codigoPedido = scan.next();
+        System.out.print("Digite o ID do pedido: ");
+        String idPedido = scan.next();
+        System.out.print("Digite o nome do cliente: ");
+        String nomeCliente = scan.next();
+        System.out.print("Digite o status do pedido: ");
+        String statusPedido = scan.next();
+        System.out.print("Digite a observação: ");
+        String observacao = scan.next();
+        System.out.print("Digite o tempo estimado (em minutos): ");
+        int tempoEstimado = scan.nextInt();
+        System.out.print("Digite a soma total: ");
+        double somaTotal = scan.nextDouble();
+        System.out.print("O pedido é para levar? [true/false]: ");
+        boolean paraLevar = scan.nextBoolean();
+
+        List<Item> itens;
+        itens = new ArrayList<>();
+        System.out.print("Digite o número de itens: ");
+        int numeroItens = scan.nextInt();
+
+        for (int i = 0; i < numeroItens; i++) {
+            System.out.print("Digite o nome do item: ");
+            String nomeItem = scan.next();
+            System.out.print("Digite o preço do item: ");
+            float precoItem = scan.nextFloat();
+            System.out.print("Digite o número de ingredientes: ");
+            int numeroIngredientes = scan.nextInt();
+            List<String> ingredientes = new ArrayList<>();
+            for (int j = 0; j < numeroIngredientes; j++) {
+                System.out.print("Digite o nome do ingrediente: ");
+                ingredientes.add(scan.next());
+            }
+            itens.add(new Item(nomeItem, precoItem, ingredientes));
+        }
+
+        mesaSelecionada.adicionarPedido(new Pedido(codigoPedido, idPedido, nomeCliente, statusPedido,
+                observacao, tempoEstimado, somaTotal, paraLevar, itens));
     }
 }
