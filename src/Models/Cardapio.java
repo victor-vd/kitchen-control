@@ -38,9 +38,31 @@ public class Cardapio implements Listaveis {
         itens.add(comida);
     }
 
-    public void listarCardapio() {
+    public void listarComida() {
+        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+        StringBuilder sBuilder = new StringBuilder();
         for (Item item : itens) {
-            System.out.println(item + "\n");
+            if (item instanceof Comida) {
+                sBuilder.append("Comida");
+                sBuilder.append(item.getNomeItem()).append("\t|\t");
+                sBuilder.append(item.getPrecoItem()).append("\t|\t");
+                sBuilder.append(item.getTamanho()).append("\t|\t");
+                sBuilder.append(item.stringIngredientes()).append("\t|\t");
+            }
+        }
+    }
+
+    public void listarBebida() {
+        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+        StringBuilder sBuilder = new StringBuilder();
+        for (Item item : itens) {
+            if (item instanceof Bebida) {
+                sBuilder.append("Bebida");
+                sBuilder.append(item.getNomeItem()).append("\t|\t");
+                sBuilder.append(item.getPrecoItem()).append("\t|\t");
+                sBuilder.append(item.getTamanho()).append("\t|\t");
+                sBuilder.append(item.stringIngredientes()).append("\t|\t");
+            }
         }
     }
 
@@ -48,12 +70,12 @@ public class Cardapio implements Listaveis {
     public void exibirTabulado() {
         System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
         StringBuilder sBuilder = new StringBuilder();
-        for(Item item: itens){
 
-            if(item instanceof Bebida){
+        for (Item item : itens) {
+            if (item instanceof Bebida) {
                 sBuilder.append("Bebida");
             }
-            if(item instanceof Comida){
+            if (item instanceof Comida) {
                 sBuilder.append("Comida");
             }
             sBuilder.append(item.getNomeItem()).append("\t|\t");
