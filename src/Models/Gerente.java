@@ -1,12 +1,9 @@
 package Models;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import application.UsuarioHandler;;
 
 public class Gerente extends Usuario {
     Scanner sc = new Scanner(System.in);
-    UsuarioHandler usuarioHandler = new UsuarioHandler();
     private String identificacao;
 
     // Construtor

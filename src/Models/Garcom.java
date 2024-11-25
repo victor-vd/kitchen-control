@@ -38,14 +38,4 @@ public class Garcom extends Funcionario {
         // Lógica para consultar cardápio
         System.out.println("Consultando cardápio...");
     }
-
-    public void consultarHistorico() {
-        // Lógica para consultar histórico de pedidos
-        System.out.println("Consultando histórico de pedidos...");
-    }
-
-    public void escolherPagamento() {
-        // Lógica para escolher forma de pagamento
-        System.out.println("Escolhendo forma de pagamento...");
-    }
 }

@@ -12,6 +12,7 @@ public class TextInterface {
     public TextInterface(Scanner scan, UsuarioHandler userHandler) {
         this.scan = scan;
         this.userHandler = userHandler;
+
     }
 
     public void start() {
@@ -19,68 +20,82 @@ public class TextInterface {
         while (!userHandler.hasActiveUser()) {
             System.out.println("Ações Disponíveis: \n");
 
-            System.out.println("Registrar-se");
-            System.out.println("Login");
+            System.out.println("0 - Sair");
+            System.out.println("1 - Login");
+
+            switch (scan.nextInt()) {
+                case 1:
+                    login();
+
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
-    public void registro() {
-        int escolha;
-        String nome;
-        String senha;
-        int cpf;
-        String email;
+    // public void registro() {
+    // int escolha;
+    // String nome;
+    // String senha;
+    // int cpf;
+    // String email;
 
-        Usuario newUsuario;
+    // Usuario newUsuario;
 
-        System.out.println("Como gostaria de se registrar?");
-        System.out.println("1 - Como Gerente" +
-                "2 - Como Cozinheiro" +
-                "3 - Como Garçom");
+    // System.out.println("Como gostaria de se registrar?");
+    // System.out.println("0 - Voltar\n1 - Como Gerente" +
+    // "\n2 - Como Cozinheiro" +
+    // "\n3 - Como Garçom");
 
-        escolha = scan.nextInt();
+    // escolha = scan.nextInt();
 
-        System.out.println("Por favor, digite seu nome: ");
-        nome = scan.nextLine();
-        System.out.println("Digite seu email: ");
-        email = scan.nextLine();
+    // System.out.println("Por favor, digite seu nome: ");
+    // nome = scan.nextLine();
+    // System.out.println("Digite seu email: ");
+    // email = scan.nextLine();
 
-        System.out.println("Digite sua senha: ");
-        senha = scan.nextLine();
+    // System.out.println("Digite sua senha: ");
+    // senha = scan.nextLine();
 
-        System.out.println("Digite seu CPF (Apenas números): ");
-        cpf = Integer.parseInt(scan.nextLine());
+    // System.out.println("Digite seu CPF (Apenas números): ");
+    // cpf = Integer.parseInt(scan.nextLine());
 
-        switch (escolha) {
-            case 1:
-                newUsuario = new Gerente(email, senha, nome, cpf, "BANANA");
-                break;
+    // switch (escolha) {
+    // case 1:
+    // newUsuario = new Gerente(email, senha, nome, cpf, "BANANA");
+    // break;
 
-            case 2:
-                newUsuario = new Cozinheiro(userHandler.getNumeroFuncionarios() + 1,
-                        email,
-                        senha,
-                        nome,
-                        cpf);
-                break;
-            case 3:
-                newUsuario = new Garcom(userHandler.getNumeroFuncionarios() + 1,
-                        email, senha, nome, cpf, 0);
-                break;
+    // case 2:
+    // newUsuario = new Cozinheiro(userHandler.getNumeroFuncionarios() + 1,
+    // email,
+    // senha,
+    // nome,
+    // cpf);
+    // break;
+    // case 3:
+    // newUsuario = new Garcom(userHandler.getNumeroFuncionarios() + 1,
+    // email, senha, nome, cpf, 0);
+    // break;
 
-        }
+    // }
 
-    }
+    // }
 
     public void login() {
-        System.out.println("Login - \n\n");
+        System.out.println("Login");
 
-        System.out.println("Digite seu e-mail e senha");
-        String email = scan.nextLine();
-        System.out.println("Digite seu senha");
-        String senha = scan.nextLine();
+        System.out.println("Digite seu email:");
+        String email = scan.next();
 
-        if (!userHandler.login(email, senha)) {
+        System.out.println("Digite sua senha:");
+        String senha = scan.next();
+
+        if (userHandler.login(email, senha)) {
+            System.out.println("Usuário Encontrado");
+
+        } else {
             System.out.println("Usuário Não Encontrado");
         }
 
@@ -88,7 +103,7 @@ public class TextInterface {
 
     public void gerenciarFuncionarios() {
         // Lógica para gerenciar funcionários
-        System.out.println("1 - Adicionar funcionário\n2 - Remover funcionário");
+        System.out.println("0 - Sair \n1 - Adicionar funcionário\n2 - Remover funcionário");
 
         switch (scan.nextInt()) {
             case 1:
@@ -116,13 +131,65 @@ public class TextInterface {
         }
     }
 
-    public void gerenciarPratos() {
-        // Lógica para gerenciar pratos
-        System.out.println("1 - Gerenciar Comidas\n 2 - Gerenciar Bebidas");
+    public void menuGerente() {
+        System.out.println("0 - Sair");
+        System.out.println("1 - Gerenciar pratos");
+        System.out.println("2 - Adicionar pedido");
+        System.out.println("3 - Gerenciar Mesas");
+        System.out.println("4 - Consultar cardápio");
+        System.out.println("5 - Modificar status do pedido");
 
         switch (scan.nextInt()) {
             case 1:
-                System.out.println("1 - Adicionar Comidas\n 2 - Remover Comidas");
+                gerenciarPratos();
+                break;
+
+            default:
+                break;
+
+        }
+    }
+
+    public void menuGarcom() {
+        System.out.println("0 - Sair");
+        System.out.println("1 - Adicionar pedido");
+        System.out.println("2 - Gerenciar Mesas");
+        System.out.println("3 - Consultar cardápio");
+
+        switch (scan.nextInt()) {
+            case 1:
+                break;
+
+            default:
+                break;
+
+        }
+    }
+
+    public void menuCozinheiro() {
+        System.out.println("0 - Sair");
+        System.out.println("1 - Gerenciar pratos");
+        System.out.println("2 - Selecionar pedido");
+        System.out.println("3 - Modificar status do pedido");
+
+        switch (scan.nextInt()) {
+            case 1:
+                gerenciarPratos();
+                break;
+
+            default:
+                break;
+
+        }
+    }
+
+    public void gerenciarPratos() {
+        // Lógica para gerenciar pratos
+        System.out.println("1 - Gerenciar Comidas\n2 - Gerenciar Bebidas");
+
+        switch (scan.nextInt()) {
+            case 1:
+                System.out.println("0 - Voltar\n1 - Adicionar Comidas\n2 - Remover Comidas");
                 switch (scan.nextInt()) {
                     case 1:
                         System.out.print("Nome da comida: ");
@@ -154,7 +221,7 @@ public class TextInterface {
                 break;
 
             case 2:
-                System.out.println("1 - Adicionar Bebidas\n 2 - Remover Bebidas");
+                System.out.println("0 - Sair\n1 - Adicionar Bebidas\n2 - Remover Bebidas");
                 switch (scan.nextInt()) {
                     case 1:
                         System.out.print("Nome da bebida: ");

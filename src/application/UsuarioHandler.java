@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Models.Funcionario;
+import Models.Gerente;
 import Models.Usuario;
 
 public class UsuarioHandler {
@@ -14,6 +15,7 @@ public class UsuarioHandler {
     public UsuarioHandler() {
         usuarios = new ArrayList<Usuario>();
         this.usuarioAtual = null;
+        usuarios.add(new Gerente("email", "senha", "nome", 1, "BANANA"));
     }
 
     public void adicionarUsuario(Usuario usuario) {
