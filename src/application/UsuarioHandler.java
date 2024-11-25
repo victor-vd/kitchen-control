@@ -50,18 +50,17 @@ public class UsuarioHandler implements Listaveis {
         return numeroFuncionarios;
     }
 
-
     @Override
     public void exibirTabulado() {
         System.out.println("| Tipo de Usuário |\t| Nome |\t| E-mail\t| CPF |");
         StringBuilder sBuilder = new StringBuilder();
-        for (Usuario usuario : usuarios){
+        for (Usuario usuario : usuarios) {
             sBuilder.append("| ");
-            if(usuario instanceof Garcom){
+            if (usuario instanceof Garcom) {
                 sBuilder.append("Garçom");
-            } else if(usuario instanceof Cozinheiro){
+            } else if (usuario instanceof Cozinheiro) {
                 sBuilder.append("Cozinheiro");
-            } else if(usuario instanceof Gerente){
+            } else if (usuario instanceof Gerente) {
                 sBuilder.append("Gerente");
             }
             sBuilder.append(usuario.getNome()).append(" |\t");
@@ -69,6 +68,6 @@ public class UsuarioHandler implements Listaveis {
             sBuilder.append(usuario.getCPF()).append(" |\t");
             sBuilder.append("\n");
         }
-            System.out.println(sBuilder);
-        }
+        System.out.println(sBuilder);
+    }
 }

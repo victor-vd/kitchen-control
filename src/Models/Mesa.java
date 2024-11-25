@@ -26,6 +26,18 @@ public class Mesa {
         this.pedidos.removeAll(pedidos);
     }
 
+    public boolean removerPedido(String idPedido) {
+        for (Pedido pedido : pedidos) {
+            if (pedido.getIdPedido().equals(idPedido)) {
+                pedidos.remove(pedido);
+                System.out.println("Pedido removido.");
+                return true;
+            }
+        }
+        System.out.println("Pedido não encontrado.");
+        return false;
+    }
+
     public List<Pedido> getPedidos() {
         return pedidos;
     }

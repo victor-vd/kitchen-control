@@ -14,10 +14,9 @@ public class Pedido {
     private double somaTotal;
     private boolean paraLevar;
 
-    public Pedido(String codigoPedido, String idPedido, String nomeCliente, String statusPedido, String observacao,
+    public Pedido(String idPedido, String nomeCliente, String statusPedido, String observacao,
             int tempoEstimado, double somaTotal, boolean paraLevar, List<Item> itens) {
         this.itens = itens;
-        this.codigoPedido = codigoPedido;
         this.idPedido = idPedido;
         this.nomeCliente = nomeCliente;
         this.statusPedido = statusPedido;

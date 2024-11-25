@@ -48,4 +48,8 @@ public class Cardapio implements Listaveis {
     public void exibirTabulado() {
 
     }
+
+    public boolean removerItemPorNome(String nomePrato) {
+        return itens.removeIf(item -> item.getNomeItem().equalsIgnoreCase(nomePrato));
+    }
 }
