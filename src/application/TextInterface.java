@@ -92,7 +92,7 @@ public class TextInterface implements UserInterface {
                     break;
                 case 2:
                     scan.nextLine(); // Consumir a nova linha pendente
-                    cardapio.listarCardapio();
+                    cardapio.exibirTabulado();
                     break;
 
                 default:
@@ -148,7 +148,7 @@ public class TextInterface implements UserInterface {
                     break;
                 case 3:
                     scan.nextLine(); // Consumir a nova linha pendente
-                    cardapio.listarCardapio();
+                    cardapio.exibirTabulado();
                     break;
                 case 4:
                     scan.nextLine(); // Consumir a nova linha pendente
@@ -195,12 +195,14 @@ public class TextInterface implements UserInterface {
 
     public void gerenciarPratos() {
         // Lógica para gerenciar pratos
-        System.out.println("\n1 - Gerenciar Comidas\n2 - Gerenciar Bebidas");
+        System.out.println("\n1 - Gerenciar Comidas\n" + //
+                "2 - Gerenciar Bebidas\n" + //
+                "3 - Exibir Itens");
 
         switch (scan.nextInt()) {
             case 1:
                 scan.nextLine(); // Consumir a nova linha pendente
-                System.out.println("\n0 - Voltar\n1 - Adicionar Comidas\n2 - Remover Comidas");
+                System.out.println("\n0 - Voltar\n1 - Adicionar Comidas\n2 - Remover Comidas\n3 - Exibir Comidas");
                 switch (scan.nextInt()) {
                     case 1:
                         scan.nextLine(); // Consumir a nova linha pendente
@@ -233,14 +235,17 @@ public class TextInterface implements UserInterface {
                             System.out.println("\nComida não encontrada.");
                         }
                         break;
-
+                    case 3:
+                        cardapio.listarComidas();
+                        break;
                     default:
                         break;
                 }
                 break;
             case 2:
                 scan.nextLine(); // Consumir a nova linha pendente
-                System.out.println("\n0 - Sair\n1 - Adicionar Bebidas\n2 - Remover Bebidas");
+                System.out.println("\n0 - Sair\n1 - Adicionar Bebidas\n2 - Remover Bebidas\n" + //
+                        "3 - Exibir Bebidas");
                 switch (scan.nextInt()) {
                     case 1:
                         scan.nextLine(); // Consumir a nova linha pendente
@@ -278,11 +283,18 @@ public class TextInterface implements UserInterface {
                         }
                         break;
 
+                    case 3:
+                        cardapio.listarBebidas();
+                        break;
                     default:
                         break;
                 }
                 break;
 
+            case 3:
+                scan.nextLine(); // Consumir a nova linha pendente
+                cardapio.exibirTabulado();
+                break;
             default:
                 break;
         }
@@ -406,16 +418,6 @@ public class TextInterface implements UserInterface {
         for (int i = 0; i < numeroItens; i++) {
             System.out.print("\nDigite o nome do item: ");
             String nomeItem = scan.next();
-            System.out.print("\nDigite o preço do item: ");
-            float precoItem = Float.parseFloat(scan.nextLine());
-            System.out.print("\nDigite o número de ingredientes: ");
-            int numeroIngredientes = Integer.parseInt(scan.nextLine());
-            List<String> ingredientes = new ArrayList<>();
-            for (int j = 0; j < numeroIngredientes; j++) {
-                System.out.print("\nDigite o nome do ingrediente: ");
-                ingredientes.add(scan.next());
-            }
-            //itens.add(new Item(nomeItem, precoItem, ingredientes));
         }
 
         mesaSelecionada.adicionarPedido(new Pedido(idPedido, nomeCliente, statusPedido,

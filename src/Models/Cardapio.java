@@ -38,10 +38,11 @@ public class Cardapio implements Listaveis {
         itens.add(comida);
     }
 
-    public void listarComida() {
-        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+    public void listarComidas() {
+        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
         StringBuilder sBuilder = new StringBuilder();
         for (Item item : itens) {
+            sBuilder.append(itens.indexOf(item)).append("\t|\t");
             if (item instanceof Comida) {
                 sBuilder.append("Comida");
                 sBuilder.append(item.getNomeItem()).append("\t|\t");
@@ -52,10 +53,11 @@ public class Cardapio implements Listaveis {
         }
     }
 
-    public void listarBebida() {
-        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+    public void listarBebidas() {
+        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
         StringBuilder sBuilder = new StringBuilder();
         for (Item item : itens) {
+            sBuilder.append(itens.indexOf(item)).append("\t|\t");
             if (item instanceof Bebida) {
                 sBuilder.append("Bebida");
                 sBuilder.append(item.getNomeItem()).append("\t|\t");
@@ -64,28 +66,30 @@ public class Cardapio implements Listaveis {
                 sBuilder.append(item.stringIngredientes()).append("\t|\t");
             }
         }
+    }
+
+    public boolean removerItemPorNome(String nomePrato) {
+        return itens.removeIf(item -> item.getNomeItem().equalsIgnoreCase(nomePrato));
     }
 
     @Override
     public void exibirTabulado() {
-        System.out.println("| Tipo de Item\t|\t| Nome\t|\t| Preço\t|\t Peso\t|\t Ingredientes \t|");
+        System.out.println("| Id\t|\t Tipo de Item\t|\t Nome\t|\t Preço\t|\t Peso\t|\t Ingredientes \t|");
         StringBuilder sBuilder = new StringBuilder();
-
         for (Item item : itens) {
+            sBuilder.append(itens.indexOf(item)).append("\t|\t");
+
             if (item instanceof Bebida) {
-                sBuilder.append("Bebida");
+                sBuilder.append("Bebida\t|\t");
             }
+
             if (item instanceof Comida) {
-                sBuilder.append("Comida");
+                sBuilder.append("Comida\t|\t");
             }
             sBuilder.append(item.getNomeItem()).append("\t|\t");
             sBuilder.append(item.getPrecoItem()).append("\t|\t");
             sBuilder.append(item.getTamanho()).append("\t|\t");
             sBuilder.append(item.stringIngredientes()).append("\t|\t");
         }
-    }
-
-    public boolean removerItemPorNome(String nomePrato) {
-        return itens.removeIf(item -> item.getNomeItem().equalsIgnoreCase(nomePrato));
     }
 }
