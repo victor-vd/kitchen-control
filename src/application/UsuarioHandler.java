@@ -3,11 +3,9 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
-import Models.Funcionario;
-import Models.Gerente;
-import Models.Usuario;
+import Models.*;
 
-public class UsuarioHandler {
+public class UsuarioHandler implements Listaveis {
     private final List<Usuario> usuarios;
     private Usuario usuarioAtual;
     private static int numeroFuncionarios;
@@ -51,4 +49,26 @@ public class UsuarioHandler {
     public int getNumeroFuncionarios() {
         return numeroFuncionarios;
     }
+
+
+    @Override
+    public void exibirTabulado() {
+        System.out.println("| Tipo de Usuário |\t| Nome |\t| E-mail\t| CPF |");
+        StringBuilder sBuilder = new StringBuilder();
+        for (Usuario usuario : usuarios){
+            sBuilder.append("| ");
+            if(usuario instanceof Garcom){
+                sBuilder.append("Garçom");
+            } else if(usuario instanceof Cozinheiro){
+                sBuilder.append("Cozinheiro");
+            } else if(usuario instanceof Gerente){
+                sBuilder.append("Gerente");
+            }
+            sBuilder.append(usuario.getNome()).append(" |\t");
+            sBuilder.append(usuario.getEmail()).append(" |\t");
+            sBuilder.append(usuario.getCPF()).append(" |\t");
+            sBuilder.append("\n");
+        }
+            System.out.println(sBuilder);
+        }
 }

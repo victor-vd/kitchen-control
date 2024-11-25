@@ -5,7 +5,7 @@ import Models.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TextInterface {
+public class TextInterface implements  UserInterface{
     private final Scanner scan;
     private final UsuarioHandler userHandler;
     Cardapio cardapio = new Cardapio();
@@ -13,7 +13,6 @@ public class TextInterface {
     public TextInterface(Scanner scan, UsuarioHandler userHandler) {
         this.scan = scan;
         this.userHandler = userHandler;
-
     }
 
     public void start() {
