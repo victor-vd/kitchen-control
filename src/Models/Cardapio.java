@@ -1,10 +1,11 @@
 package Models;
 
 import java.util.ArrayList;
+import application.Listaveis;
 import java.util.Arrays;
 import java.util.List;
 
-public class Cardapio {
+public class Cardapio implements Listaveis {
     private static List<Item> itens;
 
     public Cardapio() {
@@ -41,5 +42,10 @@ public class Cardapio {
         for (Item item : itens) {
             System.out.println(item + "\n");
         }
+    }
+
+    @Override
+    public void exibirTabulado() {
+
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TextInterface {
+public class TextInterface implements UserInterface {
     private final Scanner scan;
     private final UsuarioHandler userHandler;
     private final Cardapio cardapio = new Cardapio();
